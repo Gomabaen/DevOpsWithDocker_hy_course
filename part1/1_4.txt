@@ -1,0 +1,7 @@
+Secret message is "Docker is easy"
+
+Commands:
+sudo docker run -d --name box  devopsdockeruh/exec_bash_exercise
+sudo docker ps -a
+sudo docker exec -it box /bin/bash
+In new bash session: tail -f ./logs.txt
