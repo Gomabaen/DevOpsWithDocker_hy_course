@@ -1,0 +1,21 @@
+This is the secret message
+
+Commands that were used to find the input for secret message:
+user@ubuntu:~/DevOpsWithDocker_hy_course$ sudo docker image inspect d9854bc0e13a
+ -> searched UpperDir contents
+user@ubuntu:~/DevOpsWithDocker_hy_course$ sudo ls -la /var/lib/docker/overlay2/f3639e3b75948c3b62ef9ad95ff83ade2aafbdea473744163e101f7cf43a75ea/diff/
+user@ubuntu:~/DevOpsWithDocker_hy_course$ sudo ls -la /var/lib/docker/overlay2/f3639e3b75948c3b62ef9ad95ff83ade2aafbdea473744163e101f7cf43a75ea/diff/usr
+user@ubuntu:~/DevOpsWithDocker_hy_course$ sudo ls -la /var/lib/docker/overlay2/f3639e3b75948c3b62ef9ad95ff83ade2aafbdea473744163e101f7cf43a75ea/diff/usr/app
+total 24
+drwxr-xr-x 3 root root 4096 maalis 11 07:36 .
+drwxr-xr-x 3 root root 4096 maalis 11 07:36 ..
+-rw-r--r-- 1 root root   70 maalis 11 07:36 Dockerfile
+drwxr-xr-x 8 root root 4096 maalis 11 07:36 .git
+-rw-r--r-- 1 root root 1441 maalis 11 07:36 index.js
+-rw-r--r-- 1 root root   66 maalis 11 07:36 README.md
+
+user@ubuntu:~/DevOpsWithDocker_hy_course$ sudo more /var/lib/docker/overlay2/f3639e3b75948c3b62ef9ad95ff83ade2aafbdea473744163e101f7cf43a75ea/diff/usr/app/README.md
+This is the readme, use input "basics" to complete this exercise.
+
+ 
+
