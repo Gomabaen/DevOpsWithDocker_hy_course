@@ -1,0 +1,12 @@
+mkdir myubuntu
+touch myubuntu/Dockerfile
+nano myubuntu/Dockerfile
+cd myubuntu/
+sudo docker build -t myubuntu .
+sudo docker image ls
+sudo docker run -it myubuntu sh -c 'echo "Input website:"; read website; echo "Searching.."; sleep 1; curl http://$website;'
+
+myubuntu image's Dockerfile content:
+FROM ubuntu:19.10
+
+RUN apt-get update && apt-get install -y curl
