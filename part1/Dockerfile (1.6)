@@ -1,0 +1,9 @@
+FROM devopsdockeruh/overwrite_cmd_exercise
+
+CMD ["-c"]
+
+#$(printf "%s %s" "-c" "$(date '+%H%M%S')")
+
+# $sh -c date '+%H%M%S'
+
+# "-c", "echo -c date '+%H%M%S'"]

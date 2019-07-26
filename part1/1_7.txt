@@ -1,0 +1,5 @@
+mkdir curler
+cd curler/
+touch Dockerfile
+sudo docker build -t curler .
+sudo docker run -it curler

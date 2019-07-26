@@ -1,0 +1,2 @@
+sudo docker build -t docker_clock .
+sudo docker run docker_clock
