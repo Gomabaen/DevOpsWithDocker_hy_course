@@ -1,0 +1,7 @@
+sudo docker pull devopsdockeruh/first_volume_exercise
+sudo docker image ls
+sudo docker run -d devopsdockeruh/first_volume_exercise
+sudo docker inspect devopsdockeruh/first_volume_exercise
+touch part1/1_8_logs.txt
+sudo docker run -d --mount type=bind,source=/home/user/DevOpsWithDocker_hy_course/part1/1_8_logs.txt,target=/usr/app/logs.txt devopsdockeruh/first_volume_exercise
+tail -f part1/1_8_logs.txt 
