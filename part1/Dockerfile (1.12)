@@ -1,0 +1,43 @@
+#Dockerfile for frontend (tagged as frontend)
+#######################################
+FROM ubuntu:18.10
+
+RUN mkdir /usr/app
+WORKDIR /usr/app
+COPY . /usr/app/
+RUN apt-get update
+RUN apt-get install -y curl
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash
+RUN apt install -y nodejs
+RUN npm install
+
+ENV API_URL=http://localhost:8000
+ENV FRONT_URL=http://localhost:8000
+
+ENTRYPOINT ["npm", "start"]
+
+
+#Dockerfile for backend (tagged as eleven)
+############################################
+
+FROM alpine:3.9.4
+
+RUN mkdir /usr/app
+WORKDIR /usr/app
+COPY . /usr/app/
+
+RUN apk add bash
+RUN apk add nodejs-npm
+RUN npm install
+
+ENV FRONT_URL=http://localhost:5000
+
+ENTRYPOINT ["npm", "start"]
+
+#Commands to start
+################################################
+# frontend
+sudo docker run  -d -it -p 5000:5000 --name front frontend
+
+#backend
+sudo docker run -d -it -p 8000:8000 --name back eleven 
