@@ -1,0 +1,12 @@
+FROM alpine:3.9.4
+
+RUN mkdir /usr/app
+WORKDIR /usr/app
+COPY . /usr/app/
+
+RUN apk add bash
+RUN apk add nodejs-npm
+RUN npm install
+
+ENTRYPOINT ["npm", "start"]
+

@@ -1,0 +1,8 @@
+sudo docker build -t eleven .
+sudo docker run -d -it -p 8000:8000 -v myvol,target=/usr/app/logs.txt --name eleven_inst eleven
+sudo docker exec -it eleven_inst bash
+	tail -f logs.txt (in container)
+sudo docker stop eleven_inst
+sudo docker start --name eleven_inst
+sudo docker exec -it eleven_inst bash
+	tail -f logs.txt (in container to ensure that the log of the previous run still existed and new log was appended)
