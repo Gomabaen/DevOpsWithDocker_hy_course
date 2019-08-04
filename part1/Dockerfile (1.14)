@@ -1,0 +1,30 @@
+FROM ruby:2.6.0-alpine
+# FROM alpine:3.9.4
+
+RUN mkdir /usr/app
+WORKDIR /usr/app
+COPY . /usr/app/
+
+RUN apk update
+RUN apk add sqlite-dev
+RUN apk add bash
+RUN apk add nodejs-npm
+RUN npm install
+
+RUN apk add --no-cache build-base
+RUN gem install nokogiri
+RUN gem install sqlite3
+RUN gem install tzinfo-data
+#RUN gem install tzinfo
+
+RUN bundle install
+RUN rails db:migrate
+
+ENTRYPOINT ["rails",  "s"]
+
+# Gemfile was edited:
+#	original line  gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby] was changed so that it does not specify platforms but is always added
+# 	new line: gem 'tzinfo-data'
+# gem 'tzinfo' line was added so that time zone infos are properly installed
+#
+# Btw, I tought this course would be about learning Docker, not to tweak rails so this was frustrating exercise.
