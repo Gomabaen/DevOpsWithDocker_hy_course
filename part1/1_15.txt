@@ -1,0 +1,3 @@
+Docker Hub url for the exercise: https://cloud.docker.com/repository/docker/cowdale/docker-learning/general
+
+Git url for the application that is run in the container (as well as executing instructions): https://github.com/Gomabaen/simple_app
