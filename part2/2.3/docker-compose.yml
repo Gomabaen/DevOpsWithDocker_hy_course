@@ -1,0 +1,11 @@
+version: '3.4'
+services: 
+  backend: 
+        build:  ./../../part1/1_11/backend-example-docker
+        ports:
+        - "8000:8000"
+  frontend:
+      build: ./../../part1/1_10/frontend-example-docker
+      ports:
+      - "5000:5000"
+    
