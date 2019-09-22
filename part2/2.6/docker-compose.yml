@@ -1,0 +1,26 @@
+version: '3.4'
+services: 
+  redissi:
+    image: "redis:alpine"
+  db:
+    image: "postgres:11-alpine"
+    environment:
+      - POSTGRES_PASSWORD=glassword
+      - POSTGRES_USER=fuser
+      - POSTGRES_DB=P_DB
+  backend: 
+        build:  ./../../part1/1_11/backend-example-docker
+        ports:
+        - "8000:8000"
+        environment:
+        - REDIS=redissi
+        - REDIS_PORT=6379
+        - DB_USERNAME=fuser
+        - DB_PASSWORD=glassword
+        - DB_NAME=P_DB
+        - DB_HOST=db
+  frontend:
+      build: ./../../part1/1_10/frontend-example-docker
+      ports:
+      - "5000:5000"
+    
