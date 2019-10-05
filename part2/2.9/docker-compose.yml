@@ -1,0 +1,51 @@
+version: '3.4'
+services: 
+  redissi: 
+    image: "redis:alpine"
+    volumes: 
+      - type: bind
+        source: ./redis-persistence
+        target: /bitnami/redis/data
+  db:
+    image: "postgres:11-alpine"
+    environment:
+      - POSTGRES_PASSWORD=glassword
+      - POSTGRES_USER=fuser
+      - POSTGRES_DB=P_DB
+      - PGDATA=/var/lib/postgresql/mydata
+    volumes: 
+      - type: bind
+        source: ./dbDir
+        target: /var/lib/postgresql/mydata
+  nginx: 
+    image: "nginx:1.17.4-alpine"
+    volumes: 
+      - type: bind
+        source: ./nginx.conf
+        target: /etc/nginx/nginx.conf
+    ports:
+      - "80:80"
+    depends_on: 
+      - backend
+      - redissi
+  backend: 
+    build:  ./../../part1/1_11/backend-example-docker
+    ports:
+    - "8000:8000"
+    environment:
+    - REDIS=redissi
+    - REDIS_PORT=6379
+    - DB_USERNAME=fuser
+    - DB_PASSWORD=glassword
+    - DB_NAME=P_DB
+    - DB_HOST=db
+    depends_on: 
+      - db
+  frontend:
+    build: ./../../part1/1_10/frontend-example-docker
+    ports:
+    - "5000:5000"
+    depends_on: 
+      - backend
+    
+#  in addition to this I removed port 8000 definitions from frontend's Dockerfile, and added proxy-pass messages path in nginx.conf file.
