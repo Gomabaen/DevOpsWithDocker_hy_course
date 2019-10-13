@@ -1,0 +1,57 @@
+Note that I used alpline linux as the base for the images.
+
+Frontend original sizes
+IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
+ee5d6a086768        4 minutes ago       /bin/sh -c #(nop)  ENTRYPOINT ["npm" "start"]   0B                  
+3e399fa9b094        4 minutes ago       /bin/sh -c #(nop)  ENV FRONT_URL=http://loca…   0B                  
+d94826ae8622        4 minutes ago       /bin/sh -c #(nop)  ENV API_URL=http://localh…   0B                  
+3fb1317d4786        4 minutes ago       /bin/sh -c npm install                          155MB               
+30078b39f942        4 minutes ago       /bin/sh -c apt install -y nodejs                83MB                
+c114e0c6b87a        5 minutes ago       /bin/sh -c curl -sL https://deb.nodesource.c…   36.6MB              
+7c535477f1c3        5 minutes ago       /bin/sh -c apt-get install -y curl              14.4MB              
+62279cb620e5        5 minutes ago       /bin/sh -c apt-get update                       25.3MB              
+02648fa4dfb4        5 minutes ago       /bin/sh -c #(nop) COPY dir:1e44701be667fab43…   574kB               
+cf116af0f473        2 months ago        /bin/sh -c #(nop) WORKDIR /usr/app              0B                  
+ed0dcc685593        2 months ago        /bin/sh -c mkdir /usr/app                       0B                  
+9dc19675e327        2 months ago        /bin/sh -c #(nop)  CMD ["/bin/bash"]            0B                  
+<missing>           2 months ago        /bin/sh -c mkdir -p /run/systemd && echo 'do…   7B                  
+<missing>           2 months ago        /bin/sh -c set -xe   && echo '#!/bin/sh' > /…   811B                
+<missing>           2 months ago        /bin/sh -c [ -z "$(apt-get indextargets)" ]     987kB               
+<missing>           2 months ago        /bin/sh -c #(nop) ADD file:13804c7325ebaad31…   66.3MB              
+
+Frontend optimized sizes
+IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
+c43fb0dbea71        26 seconds ago      /bin/sh -c #(nop)  ENTRYPOINT ["npm" "start"]   0B                  
+ab1d4cc276eb        27 seconds ago      /bin/sh -c #(nop)  ENV FRONT_URL=http://loca…   0B                  
+43e0fbd3c06a        27 seconds ago      /bin/sh -c #(nop)  ENV API_URL=http://localh…   0B                  
+4bd3f2b6a129        27 seconds ago      /bin/sh -c #(nop) COPY dir:a4e74d1f4a84bcabe…   576kB               
+18d251e8f3e8        27 seconds ago      /bin/sh -c #(nop) WORKDIR /usr/app              0B                  
+bb6edf0145a7        28 seconds ago      /bin/sh -c apt-get update  &&   apt-get inst…   128MB               
+9dc19675e327        2 months ago        /bin/sh -c #(nop)  CMD ["/bin/bash"]            0B                  
+<missing>           2 months ago        /bin/sh -c mkdir -p /run/systemd && echo 'do…   7B                  
+<missing>           2 months ago        /bin/sh -c set -xe   && echo '#!/bin/sh' > /…   811B                
+<missing>           2 months ago        /bin/sh -c [ -z "$(apt-get indextargets)" ]     987kB               
+<missing>           2 months ago        /bin/sh -c #(nop) ADD file:13804c7325ebaad31…   66.3MB              
+
+Backend original sizes
+IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
+ebbf69fc3a0f        15 minutes ago      /bin/sh -c #(nop)  ENTRYPOINT ["npm" "start"]   0B                  
+271452009207        15 minutes ago      /bin/sh -c #(nop)  ENV FRONT_URL=http://loca…   0B                  
+51deb3579e5b        15 minutes ago      /bin/sh -c npm install                          58.4MB              
+11421b6dd7fa        15 minutes ago      /bin/sh -c apk add nodejs-npm                   41.4MB              
+1e8906dcbec8        16 minutes ago      /bin/sh -c apk add bash                         5.34MB              
+3a86075fd840        16 minutes ago      /bin/sh -c #(nop) COPY dir:25969cb18d532f80f…   524kB               
+ffa2ca9c1fdc        2 months ago        /bin/sh -c #(nop) WORKDIR /usr/app              0B                  
+e61039f2d2d9        2 months ago        /bin/sh -c mkdir /usr/app                       0B                  
+055936d39205        4 months ago        /bin/sh -c #(nop)  CMD ["/bin/sh"]              0B                  
+<missing>           4 months ago        /bin/sh -c #(nop) ADD file:a86aea1f3a7d68f6a…   5.53MB              
+
+Backend optimized sizes
+IMAGE               CREATED              CREATED BY                                      SIZE                COMMENT
+b2a6dc8cd3de        About a minute ago   /bin/sh -c #(nop)  ENTRYPOINT ["npm" "start"]   0B                  
+6cf891bc3424        About a minute ago   /bin/sh -c #(nop)  ENV FRONT_URL=http://loca…   0B                  
+59df6e3b2afe        About a minute ago   /bin/sh -c #(nop) COPY dir:43fc29fcf62ef3f6d…   525kB               
+6708bd856b07        About a minute ago   /bin/sh -c #(nop) WORKDIR /usr/app              0B                  
+9b0c96f28aa7        About a minute ago   /bin/sh -c apk add bash &&   apk add nodejs-…   46.6MB              
+055936d39205        5 months ago         /bin/sh -c #(nop)  CMD ["/bin/sh"]              0B                  
+<missing>           5 months ago         /bin/sh -c #(nop) ADD file:a86aea1f3a7d68f6a…   5.53MB              
