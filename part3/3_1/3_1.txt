@@ -1,5 +1,3 @@
-Note that I used alpline linux as the base for the images.
-
 Frontend original sizes
 IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
 ee5d6a086768        4 minutes ago       /bin/sh -c #(nop)  ENTRYPOINT ["npm" "start"]   0B                  
@@ -33,6 +31,7 @@ bb6edf0145a7        28 seconds ago      /bin/sh -c apt-get update  &&   apt-get 
 <missing>           2 months ago        /bin/sh -c [ -z "$(apt-get indextargets)" ]     987kB               
 <missing>           2 months ago        /bin/sh -c #(nop) ADD file:13804c7325ebaad31…   66.3MB              
 
+Note that I used alpline linux as the base for the backend image.
 Backend original sizes
 IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
 ebbf69fc3a0f        15 minutes ago      /bin/sh -c #(nop)  ENTRYPOINT ["npm" "start"]   0B                  
