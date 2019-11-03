@@ -1,0 +1,46 @@
+# Frontend Dockerfile
+FROM ubuntu:18.10
+
+RUN apt-get update  && \
+		apt-get install -y curl && \
+		curl -sL https://deb.nodesource.com/setup_10.x | bash && \
+		apt install -y nodejs && \
+		mkdir /usr/app && \
+		useradd -m app && \
+		chown -R app /usr/app
+		
+USER app
+WORKDIR /usr/app
+COPY . /usr/app/
+
+RUN npm install
+
+ENV API_URL=http://localhost:8000
+ENV FRONT_URL=http://localhost:5000
+
+ENTRYPOINT ["npm", "start"]
+
+
+# Backend Dockerfile
+FROM alpine:3.9.4
+
+RUN apk add bash && \
+		apk add nodejs-npm && \
+		npm install && \
+		mkdir /usr/app && \
+		adduser -D app && \
+		chown -R app /usr/app
+		
+USER app
+WORKDIR /usr/app
+COPY . /usr/app/
+
+RUN npm install
+ENV FRONT_URL=http://localhost:5000
+ENTRYPOINT ["npm", "start"]
+
+# Command to build frontend image(in frontend folder that contains also the project): sudo docker build -t front:3.3 .
+# Command to build backend image(in backend folder that contains also the project): sudo docker build -t back:3.3 .
+
+# Command to start frontend iamge: sudo docker run -d -it -p 5000:5000 front:3.3
+# Command to start backend image: sudo docker run -d -it -p 8000:8000 back:3.3
