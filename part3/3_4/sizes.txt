@@ -1,0 +1,68 @@
+# Sizes of front end
+
+user@ubuntu:~/DevOpsWithDocker_hy_course/part3$ sudo docker history front:3.3
+[sudo] password for user: 
+IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
+f48591fced69        6 days ago          /bin/sh -c #(nop)  ENTRYPOINT ["npm" "start"]   0B                  
+c30736f348b2        6 days ago          /bin/sh -c #(nop)  ENV FRONT_URL=http://loca…   0B                  
+062a8c5843d8        6 days ago          /bin/sh -c #(nop)  ENV API_URL=http://localh…   0B                  
+d724fb33c24d        6 days ago          /bin/sh -c npm install                          155MB               
+2eb7541ad72e        6 days ago          /bin/sh -c #(nop) COPY dir:dcc7c13b7ce646bc5…   576kB               
+0d9743f9a830        7 days ago          /bin/sh -c #(nop) WORKDIR /usr/app              0B                  
+62a6e98976f9        7 days ago          /bin/sh -c #(nop)  USER app                     0B                  
+7cbae2560794        7 days ago          /bin/sh -c apt-get update  &&   apt-get inst…   157MB               
+9dc19675e327        3 months ago        /bin/sh -c #(nop)  CMD ["/bin/bash"]            0B                  
+<missing>           3 months ago        /bin/sh -c mkdir -p /run/systemd && echo 'do…   7B                  
+<missing>           3 months ago        /bin/sh -c set -xe   && echo '#!/bin/sh' > /…   811B                
+<missing>           3 months ago        /bin/sh -c [ -z "$(apt-get indextargets)" ]     987kB               
+<missing>           3 months ago        /bin/sh -c #(nop) ADD file:13804c7325ebaad31…   66.3MB      
+
+user@ubuntu:~/DevOpsWithDocker_hy_course/part3/3_4/frontend-example-docker$ sudo docker history front:3.4
+IMAGE               CREATED              CREATED BY                                      SIZE                COMMENT
+f1a5937ed9f5        About a minute ago   /bin/sh -c #(nop)  ENV FRONT_URL=http://loca…   0B                  
+9e733b0c3256        About a minute ago   /bin/sh -c #(nop)  ENV API_URL=http://localh…   0B                  
+5e8f187eb2e4        About a minute ago   /bin/sh -c npm install                          155MB               
+1edccf7e2fd6        2 minutes ago        /bin/sh -c #(nop) COPY dir:45376b2ef0f6879c6…   575kB               
+a15c38d16ac0        2 minutes ago        /bin/sh -c #(nop) WORKDIR /home/node            0B                  
+a5bff8806b16        2 minutes ago        /bin/sh -c #(nop)  USER node                    0B                  
+f20a6d8b6721        3 days ago           /bin/sh -c #(nop)  CMD ["node"]                 0B                  
+<missing>           3 days ago           /bin/sh -c #(nop)  ENTRYPOINT ["docker-entry…   0B                  
+<missing>           3 days ago           /bin/sh -c #(nop) COPY file:238737301d473041…   116B                
+<missing>           3 days ago           /bin/sh -c apk add --no-cache --virtual .bui…   5.35MB              
+<missing>           3 days ago           /bin/sh -c #(nop)  ENV YARN_VERSION=1.19.1      0B                  
+<missing>           3 days ago           /bin/sh -c addgroup -g 1000 node     && addu…   94.1MB              
+<missing>           3 days ago           /bin/sh -c #(nop)  ENV NODE_VERSION=13.1.0      0B                  
+<missing>           3 weeks ago          /bin/sh -c #(nop)  CMD ["/bin/sh"]              0B                  
+<missing>           3 weeks ago          /bin/sh -c #(nop) ADD file:fe1f09249227e2da2…   5.55MB        
+
+#Sizes of backend
+
+user@ubuntu:~/DevOpsWithDocker_hy_course/part3$ sudo docker history back:3.3
+IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
+d0cd4db56917        6 days ago          /bin/sh -c #(nop)  ENTRYPOINT ["npm" "start"]   0B                  
+61a1b8982952        6 days ago          /bin/sh -c #(nop)  ENV FRONT_URL=http://loca…   0B                  
+5e102511610e        6 days ago          /bin/sh -c npm install                          58.4MB              
+e88577113c0c        6 days ago          /bin/sh -c #(nop) COPY dir:9f997fe20a6818ad1…   525kB               
+404c9b03e9c1        6 days ago          /bin/sh -c #(nop) WORKDIR /usr/app              0B                  
+0c3df3f3e5e2        6 days ago          /bin/sh -c #(nop)  USER app                     0B                  
+12e38208852f        6 days ago          /bin/sh -c apk add bash &&   apk add nodejs-…   46.6MB              
+055936d39205        6 months ago        /bin/sh -c #(nop)  CMD ["/bin/sh"]              0B                  
+<missing>           6 months ago        /bin/sh -c #(nop) ADD file:a86aea1f3a7d68f6a…   5.53MB     
+
+ser@ubuntu:~/DevOpsWithDocker_hy_course/part3/3_4/backend-example-docker$ sudo docker history back:3.4
+IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
+bf3dd7a8cbe9        6 minutes ago       /bin/sh -c #(nop)  ENTRYPOINT ["npm" "start"]   0B                  
+c17091b12066        6 minutes ago       /bin/sh -c #(nop)  ENV FRONT_URL=http://loca…   0B                  
+f8339267d935        6 minutes ago       /bin/sh -c npm install                          58.4MB              
+295a42c24a3f        6 minutes ago       /bin/sh -c #(nop) COPY dir:512e97b953ac4e4cb…   525kB               
+a15c38d16ac0        25 hours ago        /bin/sh -c #(nop) WORKDIR /home/node            0B                  
+a5bff8806b16        25 hours ago        /bin/sh -c #(nop)  USER node                    0B                  
+f20a6d8b6721        4 days ago          /bin/sh -c #(nop)  CMD ["node"]                 0B                  
+<missing>           4 days ago          /bin/sh -c #(nop)  ENTRYPOINT ["docker-entry…   0B                  
+<missing>           4 days ago          /bin/sh -c #(nop) COPY file:238737301d473041…   116B                
+<missing>           4 days ago          /bin/sh -c apk add --no-cache --virtual .bui…   5.35MB              
+<missing>           4 days ago          /bin/sh -c #(nop)  ENV YARN_VERSION=1.19.1      0B                  
+<missing>           4 days ago          /bin/sh -c addgroup -g 1000 node     && addu…   94.1MB              
+<missing>           4 days ago          /bin/sh -c #(nop)  ENV NODE_VERSION=13.1.0      0B                  
+<missing>           3 weeks ago         /bin/sh -c #(nop)  CMD ["/bin/sh"]              0B                  
+<missing>           3 weeks ago         /bin/sh -c #(nop) ADD file:fe1f09249227e2da2…   5.55MB        
